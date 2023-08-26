@@ -3,8 +3,13 @@ import React from 'react';
 import Slider from 'react-slick';
 import Div from '../Div';
 import Team from '../Team';
+import { useGetInstitucionQuery } from "../../api/apiSlice";
+import { useSelector } from "react-redux";
+
 
 export default function TeamSlider() {
+  const staticData = useSelector((state) => state.staticData.staticData);
+  const { data, isLoading} = useGetInstitucionQuery();
   /** Team Member Data **/
   const teamData = [
     {
@@ -93,7 +98,7 @@ export default function TeamSlider() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     prevArrow: <SlickArrowLeft />,
     nextArrow: <SlickArrowRight />,
@@ -123,18 +128,30 @@ export default function TeamSlider() {
     ],
   };
 
+  if (!isLoading) {
+    const {
+      Descripcion: {        
+        autoridad,       
+      },
+    } = data;        
+
   return (
     <Slider {...settings} className="cs-gap-24 cs-arrow_style2">
-      {teamData.map((item, index) => (
+      {autoridad.map((item, index) => (
         <Div key={index}>
           <Team
-            memberImage={item.memberImage}
-            memberName={item.memberName}
-            memberDesignation={item.memberDesignation}
-            memberSocial={item.memberSocial}
+            memberImage={`${process.env.REACT_APP_ROOT_API}/InstitucionUpea/Autoridad/${item.foto_autoridad}`}
+            memberName={item.nombre_autoridad}
+            memberDesignation={item.cargo_autoridad}
+            memberSocial={{
+              facebook: item.facebook_autoridad,
+              twitter: item.twiter_autoridad,
+              linkedin: item.celular_autoridad,
+            }}
           />
         </Div>
       ))}
     </Slider>
   );
+  }
 }

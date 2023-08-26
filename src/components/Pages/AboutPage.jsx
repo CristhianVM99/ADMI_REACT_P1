@@ -7,9 +7,13 @@ import Div from '../Div';
 import SectionHeading from '../SectionHeading';
 import TeamSlider from '../Slider/TeamSlider';
 import Spacing from '../Spacing';
+import { useGetInstitucionQuery } from '../../api/apiSlice';
 
-export default function AboutPage() {
+export default function AboutPage() {  
   pageTitle('About');
+  const {data : Institucion, isError, isLoading, error} = useGetInstitucionQuery();
+
+  let nombreInstitucion = 'Sistemas'; 
 
   const funfaceData = [
     {
@@ -32,6 +36,10 @@ export default function AboutPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!isLoading) {
+    nombreInstitucion = Institucion.Descripcion.institucion_nombre
+  }
   return (
     <>
       {/* Start Page Heading Section */}
@@ -48,7 +56,7 @@ export default function AboutPage() {
         <Div className="row">
           <Div className="col-xl-5 col-lg-7">
             <SectionHeading
-              title="Your trusted partner for business"
+              title={nombreInstitucion}
               subtitle="About Our Agency"
             >
               <Spacing lg="30" md="20" />

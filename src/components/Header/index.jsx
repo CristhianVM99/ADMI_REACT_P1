@@ -7,7 +7,13 @@ import ContactInfoWidget from '../Widget/ContactInfoWidget';
 import Div from '../Div';
 import DropDown from './DropDown';
 
+import { useGetInstitucionQuery } from "../../api/apiSlice";
+import { useSelector } from "react-redux";
+
 export default function Header({ variant }) {
+  const staticData = useSelector((state) => state.staticData.staticData);
+  const { data, isLoading } = useGetInstitucionQuery();
+
   const [isSticky, setIsSticky] = useState(false);
   const [sideHeaderToggle, setSideHeaderToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
@@ -21,6 +27,12 @@ export default function Header({ variant }) {
     });
   }, []);
 
+  if (!isLoading) {
+    const {
+      Descripcion: {        
+        institucion_logo,        
+      },
+    } = data;
   return (
     <>
       <header
@@ -33,7 +45,7 @@ export default function Header({ variant }) {
             <Div className="cs-main_header_in">
               <Div className="cs-main_header_left">
                 <Link className="cs-site_branding" to="/">
-                  <img src="/images/logo.svg" alt="Logo" />
+                  <img src={`${process.env.REACT_APP_ROOT_API}/InstitucionUpea/${institucion_logo}`} alt="Logo" />
                 </Link>
               </Div>
               <Div className="cs-main_header_center">
@@ -44,11 +56,21 @@ export default function Header({ variant }) {
                   >
                     <li className="menu-item-has-children">
                       <NavLink to="/" onClick={() => setMobileToggle(false)}>
-                        Home
+                        Nosotros
                       </NavLink>
                       <DropDown>
                         <ul>
                           <li>
+                            <Link to="/" onClick={() => setMobileToggle(false)}>
+                              Mision y Vision
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/" onClick={() => setMobileToggle(false)}>
+                              Contacto
+                            </Link>
+                          </li>
+                          {/* <li>
                             <Link to="/" onClick={() => setMobileToggle(false)}>
                               Main Home
                             </Link>
@@ -100,24 +122,24 @@ export default function Header({ variant }) {
                             >
                               Case Study Showcase
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </DropDown>
                     </li>
-                    <li>
+                    {/* <li>
                       <NavLink
                         to="about"
                         onClick={() => setMobileToggle(false)}
                       >
-                        About
+                        Convocatorias y Cursos
                       </NavLink>
-                    </li>
+                    </li> */}
                     <li className="menu-item-has-children">
                       <NavLink
                         to="service"
                         onClick={() => setMobileToggle(false)}
                       >
-                        Services
+                        Academia
                       </NavLink>
                       <DropDown>
                         <ul>
@@ -126,8 +148,40 @@ export default function Header({ variant }) {
                               to="service"
                               onClick={() => setMobileToggle(false)}
                             >
+                              Calendario Academico
+                            </Link>                            
+                          </li>
+                          <li>
+                            <Link
+                              to="service"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Horario
+                            </Link>                            
+                          </li>
+                          <li>
+                            <Link
+                              to="service"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Plan de Estudio
+                            </Link>                            
+                          </li>
+                          <li>
+                            <Link
+                              to="service"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Reglamento Mod. de Graduacion
+                            </Link>                            
+                          </li>
+                          {/* <li>
+                            <Link
+                              to="service"
+                              onClick={() => setMobileToggle(false)}
+                            >
                               Services
-                            </Link>
+                            </Link>                            
                           </li>
                           <li>
                             <Link
@@ -136,7 +190,7 @@ export default function Header({ variant }) {
                             >
                               Service Details
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </DropDown>
                     </li>
@@ -145,11 +199,35 @@ export default function Header({ variant }) {
                         to="portfolio"
                         onClick={() => setMobileToggle(false)}
                       >
-                        Portfolio
+                        Institucion
                       </NavLink>
                       <DropDown>
                         <ul>
                           <li>
+                            <Link
+                              to="portfolio"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Convenios Institucionales
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="portfolio"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Pasantias
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="portfolio"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Trabajos Dirigidos
+                            </Link>
+                          </li>
+                          {/* <li>
                             <Link
                               to="portfolio"
                               onClick={() => setMobileToggle(false)}
@@ -164,13 +242,13 @@ export default function Header({ variant }) {
                             >
                               Portfolio Details
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </DropDown>
                     </li>
                     <li className="menu-item-has-children">
                       <NavLink to="blog" onClick={() => setMobileToggle(false)}>
-                        Blog
+                        Mas
                       </NavLink>
                       <DropDown>
                         <ul>
@@ -179,27 +257,83 @@ export default function Header({ variant }) {
                               to="blog"
                               onClick={() => setMobileToggle(false)}
                             >
-                              Blog
+                              Servicios
                             </Link>
                           </li>
                           <li>
+                            <Link
+                              to="blog"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Ofertas Academicas
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="blog"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Publicaciones
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="blog"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Gacetas
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="blog"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Eventos
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="blog"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Videos
+                            </Link>
+                          </li>
+                          {/* <li>
                             <Link
                               to="blog/blog-details"
                               onClick={() => setMobileToggle(false)}
                             >
                               Blog Details
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </DropDown>
                     </li>
                     <li className="menu-item-has-children">
                       <Link to="/" onClick={() => setMobileToggle(false)}>
-                        Pages
+                        Kardex
                       </Link>
                       <DropDown>
                         <ul>
                           <li>
+                            <Link
+                              to="/contact"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Inscripciones
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/contact"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Campus Virtual
+                            </Link>
+                          </li>
+                          {/* <li>
                             <Link
                               to="/contact"
                               onClick={() => setMobileToggle(false)}
@@ -238,7 +372,40 @@ export default function Header({ variant }) {
                             >
                               FAQ
                             </Link>
+                          </li> */}
+                        </ul>
+                      </DropDown>
+                    </li>
+                    <li className="menu-item-has-children">
+                      <Link to="/" onClick={() => setMobileToggle(false)}>
+                        Biblioteca
+                      </Link>
+                      <DropDown>
+                        <ul>
+                          <li>
+                            <Link
+                              to="/contact"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Biblioteca Virtual
+                            </Link>
                           </li>
+                          <li>
+                            <Link
+                              to="/contact"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Biblioteca Upea
+                            </Link>
+                          </li>                          
+                          <li>
+                            <Link
+                              to="/contact"
+                              onClick={() => setMobileToggle(false)}
+                            >
+                              Repositorio
+                            </Link>
+                          </li>                          
                         </ul>
                       </DropDown>
                     </li>
@@ -255,7 +422,7 @@ export default function Header({ variant }) {
                   </span>
                 </Div>
               </Div>
-              <Div className="cs-main_header_right">
+              {/* <Div className="cs-main_header_right">
                 <Div className="cs-toolbox">
                   <span
                     className="cs-icon_btn"
@@ -269,7 +436,7 @@ export default function Header({ variant }) {
                     </span>
                   </span>
                 </Div>
-              </Div>
+              </Div> */}
             </Div>
           </Div>
         </Div>
@@ -315,4 +482,7 @@ export default function Header({ variant }) {
       </Div>
     </>
   );
+  }
+
+  return null;
 }
