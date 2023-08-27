@@ -9,7 +9,7 @@ export default function Testimonial({testimonialText, avatarName, avatarDesignat
       <Div className="cs-testimonial_quote">
         <Icon icon="fa:quote-left" />               
       </Div>
-      <Div className="cs-testimonial_text">{testimonialText}</Div>
+      <Div className="cs-testimonial_text">{testimonialText}</Div>      
       <Div className="cs-rating">
         <Div className="cs-rating_bg" style={{backgroundImage: 'url(/images/rating.svg)'}} />
         <Div className="cs-rating_percentage" style={{backgroundImage: 'url(/images/rating.svg)', width:`${ratings * 20}%`}} />

@@ -11,23 +11,35 @@ const Index = {
     //VIDEO
     txt_Title_Video: '"La UPEA, una universidad de futuro." Esta frase refleja la visión de la UPEA de ser una universidad líder en Bolivia y en la región. La universidad está comprometida con el desarrollo de sus estudiantes, de la región y del país.',
 
-    //CONVOCATORIAS
-    txt_Title_Convocatorias: 'Lo Ultimo de Convocatorias',
+    //CONVOCATORIAS, COMUNICADOS, AVISOS 
+    txt_Title_Convocatorias: 'Lo Ultimo de Convocatorias, Comunicados y Avisos',
+    txt_Title_Button_Convocatorias_Cursos: 'Ver Mas',
 
-    //AVISOS 
-    txt_Title_Avisos: 'Lo Ultimo de Avisos',
-
-    //COMUNICADOS
-    txt_Title_Comunicados: 'Lo Ultimo de Comunicados',
+    //CURSOS, SEMINARIOS
+    txt_Title_Cursos: 'Lo Ultimo de Cursos y Seminarios',
 
     //LINKS EXTERNOS
     txt_Title_Links_Externos: 'Links Externos',
-    txt_Description_Links_Externos: 'Los links que pertenecen a la carrera de ',
+    txt_Description_Links_Externos: 'Los links que pertenecen a la carrera de ',   
+    
+    //FOOTER 
+    txt_Description_Text_Footer: '"La UPEA es una universidad que te da las herramientas para cambiar el mundo"',
+    txt_Link_Universidad_Publica_De_El_Alto: 'https://www.upea.bo/',
+}
+const TestimonialSlider = {
+    //AUTORIDADES
+    txt_Description_Autoridades: 'El liderazgo verdadero se forja en la capacidad de inspirar y guiar a otros hacia un futuro que todos anhelamos. Recordemos siempre que nuestras acciones no solo moldean el presente, sino que también trazan el camino hacia un mañana mejor para nuestra comunidad y para las generaciones venideras.'
 }
 
+const Developer = {
+    //DESARROLLADOR 
+    CVM_link: 'https://www.linkedin.com/in/cristhian-villca-mamani-06933b251/'
+}
 const initialState = {
     staticData: {
         Index,
+        TestimonialSlider,
+        Developer,
     },    
 };
 

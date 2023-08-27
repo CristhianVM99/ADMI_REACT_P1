@@ -23,6 +23,13 @@ export default function Home() {
   pageTitle("Home");
   const staticData = useSelector((state) => state.staticData.staticData);
   const { data, isLoading} = useGetInstitucionQuery();
+  // const {data:convocatorias, isLoading:lg_convocatorias} = useGetConvocatoriasQuery();
+  // console.log("conv",convocatorias)
+
+  const TIPOS = {    
+    CONVOCATORIAS: "CONVOCATORIAS",
+    CURSOS: "CURSOS",
+  };
 
   // Hero Social Links
   const heroSocialLinks = [
@@ -157,37 +164,7 @@ export default function Home() {
             </Div>
           </Div>
         </Div>
-        {/* End Service Section */}
-
-        {/* Start Comunicados Section */}
-        <Spacing lg="150" md="50" />
-        <Div>
-          <Div className="container">
-            <SectionHeading
-              title={staticData.Index.txt_Title_Comunicados}
-              subtitle={institucion_iniciales}
-              variant="cs-style1 text-center"
-            />
-            <Spacing lg="90" md="45" />
-          </Div>
-          <PortfolioSlider />
-        </Div>
-        {/* End Comunicados Section */}
-
-        {/* Start Avisos Section */}
-        <Spacing lg="150" md="50" />
-        <Div>
-          <Div className="container">
-            <SectionHeading
-              title={staticData.Index.txt_Title_Avisos}
-              subtitle={institucion_iniciales}
-              variant="cs-style1 text-center"
-            />
-            <Spacing lg="90" md="45" />
-          </Div>
-          <PortfolioSlider />
-        </Div>
-        {/* End Avisos Section */}
+        {/* End Service Section */}        
 
         {/* Start Convocatorias Section */}
         <Spacing lg="150" md="50" />
@@ -200,9 +177,24 @@ export default function Home() {
             />
             <Spacing lg="90" md="45" />
           </Div>
-          <PortfolioSlider />
+          <PortfolioSlider tipo={TIPOS.CONVOCATORIAS}/>
         </Div>
         {/* End Convocatorias Section */}
+
+        {/* Start Cursos Section */}
+        <Spacing lg="150" md="50" />
+        <Div>
+          <Div className="container">
+            <SectionHeading
+              title={staticData.Index.txt_Title_Cursos}
+              subtitle={institucion_iniciales}
+              variant="cs-style1 text-center"
+            />
+            <Spacing lg="90" md="45" />
+          </Div>
+          <PortfolioSlider tipo={TIPOS.CURSOS}/>
+        </Div>
+        {/* End Cursos Section */}
 
         {/* Start Awards Section */}
         <Spacing lg="150" md="80" />
@@ -214,7 +206,7 @@ export default function Home() {
             <Div className="row">
               <Div className="col-xl-4">
                 <SectionHeading
-                  title={staticData.Index.txt_Title_Comunicados}
+                  title='title'
                   subtitle="Our Awards"
                   variant="cs-style1"
                 />
@@ -256,11 +248,11 @@ export default function Home() {
         <Spacing lg="150" md="80" />
         {/* End Autoridades Section */}  
 
-        {/* Start Testimonial Section */}
+        {/* Start Autoridades Section */}
         <TestimonialSlider />
-        {/* End Testimonial Section */}
+        {/* End Autoridades Section */}
 
-        {/* Start Blog Section */}
+        {/* Start Convocatorias Section */}
         <Spacing lg="150" md="80" />
         <Div className="cs-shape_wrap_4">
           <Div className="cs-shape_4"></Div>
@@ -269,26 +261,52 @@ export default function Home() {
             <Div className="row">
               <Div className="col-xl-4">
                 <SectionHeading
-                  title="Explore recent publication"
-                  subtitle="Our Blog"
-                  btnText="View More Blog"
+                  title={staticData.Index.txt_Title_Convocatorias}
+                  subtitle={institucion_iniciales}
+                  btnText={staticData.Index.txt_Title_Button_Convocatorias_Cursos}
                   btnLink="/blog"
                 />
                 <Spacing lg="90" md="45" />
               </Div>
               <Div className="col-xl-7 offset-xl-1">
                 <Div className="cs-half_of_full_width">
-                  <PostSlider />
+                  <PostSlider tipo={TIPOS.CONVOCATORIAS}/>
                 </Div>
               </Div>
             </Div>
           </Div>
         </Div>
-        {/* End Blog Section */}
+        {/* End Convocatorias Section */}
+
+        {/* Start Cursos Section */}
+        <Spacing lg="150" md="80" />
+        <Div className="cs-shape_wrap_4">
+          <Div className="cs-shape_4"></Div>
+          <Div className="cs-shape_4"></Div>
+          <Div className="container">
+            <Div className="row">
+              <Div className="col-xl-4">
+                <SectionHeading
+                  title={staticData.Index.txt_Title_Cursos}
+                  subtitle={institucion_iniciales}
+                  btnText={staticData.Index.txt_Title_Button_Convocatorias_Cursos}
+                  btnLink="/blog"
+                />
+                <Spacing lg="90" md="45" />
+              </Div>
+              <Div className="col-xl-7 offset-xl-1">
+                <Div className="cs-half_of_full_width">
+                  <PostSlider tipo={TIPOS.CURSOS}/>
+                </Div>
+              </Div>
+            </Div>
+          </Div>
+        </Div>
+        {/* End Cursos Section */}
 
         {/* Start MovingText Section */}
         <Spacing lg="125" md="70" />
-        <MovingText text="Our reputed world wide partners" />
+        <MovingText text={institucion_nombre} />
         <Spacing lg="105" md="70" />
         {/* End MovingText Section */}
 
