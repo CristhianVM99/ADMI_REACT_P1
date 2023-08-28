@@ -27,6 +27,16 @@ export default function Header({ variant }) {
     });
   }, []);
 
+  const RUTAS = {
+    RUTA_ALL : 'portfolio/TODOS',
+    RUTA_SERVICIOS: 'portfolio/SERVICIOS',
+    RUTA_OFERTAS_ACADEMICAS: 'portfolio/OFERTAS_ACADEMICAS',
+    RUTA_PUBLICACIONES: 'portfolio/PUBLICACIONES',
+    RUTA_GACETAS: 'portfolio/GACETAS',
+    RUTA_EVENTOS: 'portfolio/EVENTOS',
+    RUTA_VIDEOS: 'portfolio/VIDEOS'
+  }
+
   if (!isLoading) {
     const {
       Descripcion: {        
@@ -247,14 +257,14 @@ export default function Header({ variant }) {
                       </DropDown>
                     </li>
                     <li className="menu-item-has-children">
-                      <NavLink to="blog" onClick={() => setMobileToggle(false)}>
+                      <NavLink to={RUTAS.RUTA_ALL} onClick={() => setMobileToggle(false)}>
                         Mas
                       </NavLink>
                       <DropDown>
                         <ul>
                           <li>
                             <Link
-                              to="blog"
+                              to={RUTAS.RUTA_SERVICIOS}
                               onClick={() => setMobileToggle(false)}
                             >
                               Servicios
@@ -262,7 +272,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog"
+                              to={RUTAS.RUTA_OFERTAS_ACADEMICAS}
                               onClick={() => setMobileToggle(false)}
                             >
                               Ofertas Academicas
@@ -270,7 +280,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog"
+                              to={RUTAS.RUTA_PUBLICACIONES}
                               onClick={() => setMobileToggle(false)}
                             >
                               Publicaciones
@@ -278,7 +288,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog"
+                              to={RUTAS.RUTA_GACETAS}
                               onClick={() => setMobileToggle(false)}
                             >
                               Gacetas
@@ -286,7 +296,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog"
+                              to={RUTAS.RUTA_EVENTOS}
                               onClick={() => setMobileToggle(false)}
                             >
                               Eventos
@@ -294,7 +304,7 @@ export default function Header({ variant }) {
                           </li>
                           <li>
                             <Link
-                              to="blog"
+                              to={RUTAS.RUTA_VIDEOS}
                               onClick={() => setMobileToggle(false)}
                             >
                               Videos

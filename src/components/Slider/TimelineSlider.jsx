@@ -3,52 +3,15 @@ import React from 'react';
 import Slider from 'react-slick';
 import Div from '../Div';
 import Timeline from '../Timeline';
+import { useGetLinksIntExtAllQuery } from '../../api/apiSlice'
 
+//OBSERVACION PARA DESARROLLO
 export default function TimelineSlider() {
-  const timelineData = [
-    [
-      {
-        year: '2019',
-        name: 'Google awards',
-        position: 'Website of the day',
-        type: 'Mobile exelence',
-      },
-      {
-        year: '2021',
-        name: 'CSS awards design',
-        position: 'Honorable mention',
-        type: 'Desktop exelence',
-      },
-    ],
-    [
-      {
-        year: '2020',
-        name: 'New technology innovation',
-        position: 'Honorable mention',
-        type: 'Desktop exelence',
-      },
-      {
-        year: '2022',
-        name: 'UI/UX design of the month',
-        position: 'Website of the day',
-        type: 'Mobile exelence',
-      },
-    ],
-    [
-      {
-        year: '2019',
-        name: 'Google awards',
-        position: 'Website of the day',
-        type: 'Mobile exelence',
-      },
-      {
-        year: '2021',
-        name: 'CSS awards design',
-        position: 'Honorable mention',
-        type: 'Desktop exelence',
-      },
-    ],
-  ];
+  const { data, isLoading} = useGetLinksIntExtAllQuery(); 
+
+  const TIPOS = {        
+    KARDEX: "KARDEX",
+  };
 
   /** Slider Settings **/
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
@@ -94,13 +57,81 @@ export default function TimelineSlider() {
       },
     ],
   };
-  return (
-    <Slider {...settings} className="cs-arrow_style3">
-      {timelineData.map((item, index) => (
-        <Div key={index}>
-          <Timeline columnData={item} />
-        </Div>
-      ))}
-    </Slider>
-  );
+
+  if (!isLoading) {    
+
+    const timelineData = [
+      [
+        {
+          year: '2019',
+          name: 'Google awards',
+          position: 'Website of the day',
+          type: 'Mobile exelence',
+        },
+        {
+          year: '2021',
+          name: 'CSS awards design',
+          position: 'Honorable mention',
+          type: 'Desktop exelence',
+        },
+      ],
+      [
+        {
+          year: '2020',
+          name: 'New technology innovation',
+          position: 'Honorable mention',
+          type: 'Desktop exelence',
+        },
+        {
+          year: '2022',
+          name: 'UI/UX design of the month',
+          position: 'Website of the day',
+          type: 'Mobile exelence',
+        },
+      ],
+      [
+        {
+          year: '2019',
+          name: 'Google awards',
+          position: 'Website of the day',
+          type: 'Mobile exelence',
+        },
+        {
+          year: '2021',
+          name: 'CSS awards design',
+          position: 'Honorable mention',
+          type: 'Desktop exelence',
+        },
+      ],
+    ];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    const Data_Links = data.filter((e)=> e.ei_tipo === TIPOS.KARDEX)    
+    const links = Data_Links.map(item => {
+      return [
+        [
+          {
+            year: currentYear,
+            name: item.ei_nombre,
+            position: '',
+            type: '',
+          }
+        ]
+
+      ];
+    }) 
+
+    return (
+      <Slider {...settings} className="cs-arrow_style3">
+        {timelineData.map((item, index) => (
+          <Div key={index}>
+            <Timeline columnData={item} />
+          </Div>
+        ))}
+      </Slider>
+    );
+  }
+  return null;
+  
 }

@@ -45,6 +45,7 @@ export const {
     useGetInstitucionQuery, 
     useGetConvocatoriasQuery,
     useGetCursosQuery,
+    useGetLinksIntExtAllQuery,
     useGetServiciosQuery,
     useGetOfertasAcademicasQuery,
     useGetPublicacionesQuery, 

@@ -39,7 +39,7 @@ function App() {
             path="service/:serviceDetailsId"
             element={<ServiceDetailsPage />}
           />
-          <Route path="portfolio" element={<PortfolioPage />} />
+          <Route path="portfolio/:tipo" element={<PortfolioPage />} />
           <Route
             path="portfolio/:portfolioDetailsId"
             element={<PortfolioDetailsPage />}

@@ -25,19 +25,27 @@ export default function Footer({copyrightText, logoSrc, logoAlt, text}) {
   
   const serviceMenu = [
     {
-      title: 'UI/UX design',
+      title: 'Servicios',
       href: '/service/service-details'
     },
     {
-      title: 'WP development',
+      title: 'Ofertas Academicas',
       href: '/service/service-details'
     },
     {
-      title: 'Digital marketing',
+      title: 'Publicaciones',
       href: '/service/service-details'
     },
     {
-      title: 'React development',
+      title: 'Gacetas',
+      href: '/service/service-details'
+    },
+    {
+      title: 'Eventos',
+      href: '/service/service-details'
+    },
+    {
+      title: 'Videos',
       href: '/service/service-details'
     },
   ]
@@ -68,7 +76,7 @@ export default function Footer({copyrightText, logoSrc, logoAlt, text}) {
               </Div>
               <Div className="col-lg-3 col-sm-6">
                 <Div className="cs-footer_item">
-                  <MenuWidget menuItems={serviceMenu} menuHeading='Services'/>
+                  <MenuWidget menuItems={serviceMenu} menuHeading='Servicios'/>
                 </Div>
               </Div>
               <Div className="col-lg-3 col-sm-6">

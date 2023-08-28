@@ -8,9 +8,7 @@ export default function ContactInfoWidget({withIcon, title}) {
 
   if (!isLoading) {
     const {
-      Descripcion: {        
-        institucion_nombre,
-        institucion_iniciales,
+      Descripcion: {                
         institucion_celular1,
         institucion_correo1,
         institucion_direccion,        

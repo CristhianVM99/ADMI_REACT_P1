@@ -16,52 +16,18 @@ import TeamSlider from "../Slider/TeamSlider";
 import VideoModal from "../VideoModal";
 import TimelineSlider from "../Slider/TimelineSlider";
 import { pageTitle } from "../../helper";
-import { useGetInstitucionQuery } from "../../api/apiSlice";
+import { useGetInstitucionQuery} from "../../api/apiSlice";
 import { useSelector } from "react-redux";
 
 export default function Home() {
   pageTitle("Home");
   const staticData = useSelector((state) => state.staticData.staticData);
   const { data, isLoading} = useGetInstitucionQuery();
-  // const {data:convocatorias, isLoading:lg_convocatorias} = useGetConvocatoriasQuery();
-  // console.log("conv",convocatorias)
 
   const TIPOS = {    
     CONVOCATORIAS: "CONVOCATORIAS",
     CURSOS: "CURSOS",
-  };
-
-  // Hero Social Links
-  const heroSocialLinks = [
-    {
-      name: "Behance",
-      links: "/",
-    },
-    {
-      name: "Twitter",
-      links: "/",
-    },
-  ];
-
-  // FunFact Data
-  const funfaceData = [
-    {
-      title: "Global Happy Clients",
-      factNumber: "40K",
-    },
-    {
-      title: "Project Completed",
-      factNumber: "50K",
-    },
-    {
-      title: "Team Members",
-      factNumber: "245",
-    },
-    {
-      title: "Digital products",
-      factNumber: "550",
-    },
-  ];
+  };   
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,8 +41,28 @@ export default function Home() {
         institucion_nombre,
         institucion_iniciales,      
         institucion_link_video_vision,  
+        institucion_facebook,
+        institucion_youtube,
+        institucion_twitter,
       },
-    } = data;
+    } = data;    
+
+    // Hero Social Links
+  const heroSocialLinks = [
+    {
+      name: 'Facebook',
+      links: institucion_facebook,
+    },
+    {
+      name: 'YouTube',
+      links: institucion_youtube,
+    },
+    {
+      name: 'Twitter',
+      links: institucion_twitter,
+    },
+  ]; 
+
     return (
       <>
         {/* Start Hero Section */}
@@ -98,7 +84,6 @@ export default function Home() {
             variant="cs-type1"
             title={staticData.Index.txt_Title_Links_Externos}
             subtitle={staticData.Index.txt_Description_Links_Externos+institucion_nombre}
-            data={funfaceData}
           />
         </div>
         {/* End FunFact Section */}
@@ -196,8 +181,8 @@ export default function Home() {
         </Div>
         {/* End Cursos Section */}
 
-        {/* Start Awards Section */}
-        <Spacing lg="150" md="80" />
+        {/* Start Enlaces Section */}
+        {/* <Spacing lg="150" md="80" />
         <Div className="cs-shape_wrap_2">
           <Div className="cs-shape_2">
             <Div />
@@ -206,8 +191,8 @@ export default function Home() {
             <Div className="row">
               <Div className="col-xl-4">
                 <SectionHeading
-                  title='title'
-                  subtitle="Our Awards"
+                  title={staticData.Index.txt_Title_Links_Externos}
+                  subtitle={institucion_iniciales}
                   variant="cs-style1"
                 />
                 <Spacing lg="90" md="45" />
@@ -217,8 +202,8 @@ export default function Home() {
               </Div>
             </Div>
           </Div>
-        </Div>
-        {/* End Awards Section */}
+        </Div> */}
+        {/* End Enlaces Section */}
 
         {/* Start Video Block Section */}
         <Spacing lg="130" md="70" />
@@ -311,10 +296,10 @@ export default function Home() {
         {/* End MovingText Section */}
 
         {/* Start LogoList Section */}
-        <Div className="container">
+        {/* <Div className="container">
           <LogoList />
         </Div>
-        <Spacing lg="150" md="80" />
+        <Spacing lg="150" md="80" /> */}
         {/* End LogoList Section */}
 
         {/* Start CTA Section */}

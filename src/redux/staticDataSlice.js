@@ -9,7 +9,7 @@ const Index = {
     txt_Title_Autoridades: 'Nuestras <br> Autoridades',
 
     //VIDEO
-    txt_Title_Video: '"La UPEA, una universidad de futuro." Esta frase refleja la visión de la UPEA de ser una universidad líder en Bolivia y en la región. La universidad está comprometida con el desarrollo de sus estudiantes, de la región y del país.',
+    txt_Title_Video: 'En las alturas de El Alto, la UPEA es un faro de educación y progreso.',
 
     //CONVOCATORIAS, COMUNICADOS, AVISOS 
     txt_Title_Convocatorias: 'Lo Ultimo de Convocatorias, Comunicados y Avisos',
