@@ -28,6 +28,7 @@ export default function PortfolioSlider({ tipo }) {
     ]
   };
 
+  /* TIPOS DE CONVOCATORIAS Y CURSOS*/
   const TIPOS = {
     COMUNICADOS: "COMUNICADOS",
     AVISOS: "AVISOS",
@@ -36,6 +37,7 @@ export default function PortfolioSlider({ tipo }) {
     SEMINARIOS: "SEMINARIOS",
   };
 
+  /* TIPOS DE VISTAS PARA RETORNAR */
   const IF_VIEW = {
     TIPO_CONVOCATORIAS: 'CONVOCATORIAS',
     TIPO_CURSOS: 'CURSOS',
